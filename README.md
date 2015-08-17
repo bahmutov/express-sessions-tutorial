@@ -8,7 +8,7 @@ You can run the code at different step, here are the tags
 * `step-1` - sessions in plain JSON files.
 * `step-2` - counting views in a session.
 
-The tutorial itself is at [glebbahmutov.com/blog/blog/express-sessions/](http://glebbahmutov.com/blog/blog/express-sessions/).
+The tutorial itself is at [glebbahmutov.com/blog/express-sessions/](http://glebbahmutov.com/blog/express-sessions/).
 
 ### Small print
 
