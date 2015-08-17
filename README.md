@@ -1,4 +1,4 @@
-# expressjs-sessions
+# express-sessions-tutorial
 
 > Debugging ExpressJS sessions tutorial
 
