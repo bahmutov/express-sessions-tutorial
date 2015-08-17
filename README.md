@@ -6,6 +6,7 @@ You can run the code at different step, here are the tags
 
 `step-0` - the initial code without sessions.
 `step-1` - sessions in plain JSON files.
+`step-2` - counting views in a session.
 
 ### Small print
 

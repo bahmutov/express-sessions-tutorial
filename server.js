@@ -13,13 +13,30 @@ app.use(session({
   store: new FileStore()
 }));
 
+app.get('/', function initViewsCount(req, res, next) {
+  if (typeof req.session.views === 'undefined') {
+    req.session.views = 0;
+    return res.end('Welcome to the file session demo. Refresh page!');
+  }
+  return next();
+});
+
+app.get('/', function incrementViewsCount(req, res, next) {
+  console.assert(req.session.views,
+    'missing views count in the session', req.session);
+  req.session.views++;
+  return next();
+});
+
 app.use(function printSession(req, res, next) {
   console.log('req.session', req.session);
   return next();
 });
 
-app.get('/', function (req, res) {
-  res.send('hi there');
+app.get('/', function sendPageWithCounter(req, res) {
+  res.setHeader('Content-Type', 'text/html');
+  res.write('<p>views: ' + req.session.views + '</p>');
+  res.end();
 });
 
 var server = app.listen(3000, function () {
