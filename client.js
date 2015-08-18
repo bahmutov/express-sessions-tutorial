@@ -1,4 +1,6 @@
-var rp = require('request-promise');
+var rp = require('request-promise').defaults({
+  jar: true
+});
 
 function requestPage() {
   return rp('http://localhost:3000/');
