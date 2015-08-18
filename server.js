@@ -22,7 +22,7 @@ app.get('/', function initViewsCount(req, res, next) {
 });
 
 app.get('/', function incrementViewsCount(req, res, next) {
-  console.assert(req.session.views,
+  console.assert(typeof req.session.views === 'number',
     'missing views count in the session', req.session);
   req.session.views++;
   return next();
@@ -35,7 +35,7 @@ app.use(function printSession(req, res, next) {
 
 app.get('/', function sendPageWithCounter(req, res) {
   res.setHeader('Content-Type', 'text/html');
-  res.write('<p>views: ' + req.session.views + '</p>');
+  res.write('<p>views: ' + req.session.views + '</p>\n');
   res.end();
 });
 
