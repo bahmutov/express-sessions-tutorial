@@ -1,3 +1,5 @@
+var https = require('https');
+var fs = require('fs');
 var app = require('express')();
 
 app.use(require('morgan')('dev'));
@@ -39,8 +41,11 @@ app.get('/', function sendPageWithCounter(req, res) {
   res.end();
 });
 
-var server = app.listen(3000, function () {
+var server = https.createServer({
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+}, app).listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('Example app listening at https://%s:%s', host, port);
 });

@@ -9,6 +9,7 @@ You can run the code at different step, here are the tags
 * `step-2` - counting views in a session.
 * `step-3` - sending cookies from curl or [httpie](https://github.com/jkbrzt/httpie)
 * `step-4` - session from a Node client.
+* `step-5` - Express server running on HTTPS locally.
 
 The tutorial itself is at [glebbahmutov.com/blog/express-sessions/](http://glebbahmutov.com/blog/express-sessions/).
 

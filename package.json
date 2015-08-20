@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon server.js --ignore sessions"
+    "watch": "nodemon server.js --ignore sessions",
+    "make-certificate": "openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365",
+    "remove-passphrase": "openssl rsa -in key.pem -out newkey.pem && mv newkey.pem key.pem"
   },
   "keywords": [
     "express",
