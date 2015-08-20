@@ -19,7 +19,8 @@
     "express-session": "1.11.3",
     "morgan": "1.6.1",
     "request-promise": "0.4.3",
-    "session-file-store": "0.0.18"
+    "session-file-store": "0.0.18",
+    "tough-cookie-filestore": "0.0.1"
   },
   "devDependencies": {
     "nodemon": "1.4.1"

@@ -1,5 +1,7 @@
-var rp = require('request-promise').defaults({
-  jar: true
+var FileCookieStore = require('tough-cookie-filestore');
+var requestPromise = require('request-promise');
+var rp = requestPromise.defaults({
+  jar: requestPromise.jar(new FileCookieStore('cookies.json'))
 });
 
 function requestPage() {
