@@ -6,14 +6,28 @@ var rp = requestPromise.defaults({
   jar: requestPromise.jar(new FileCookieStore('cookies.json'))
 });
 
-function requestPage() {
-  return rp('https://localhost:3000/');
+function requestPage(previousResponse) {
+  var referer = previousResponse ? previousResponse.headers.referer : null;
+  if (previousResponse) {
+    console.log('previous response referer "%s"', referer);
+  }
+
+  return rp({
+    url: 'https://localhost:3000/',
+    resolveWithFullResponse: true,
+    headers: {
+      referer: referer
+    }
+  });
 }
 
 requestPage()
-  .then(console.dir)
-  .then(requestPage)
-  .then(console.dir)
-  .then(requestPage)
-  .then(console.dir)
+  .then(function (response) {
+    console.log(response.body);
+    return requestPage(response);
+  })
+  .then(function (response) {
+    console.log(response.body);
+    return requestPage(response);
+  })
   .catch(console.error);
