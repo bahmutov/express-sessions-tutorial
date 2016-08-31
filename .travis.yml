@@ -1,0 +1,18 @@
+sudo: false
+language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+node_js:
+  - '6'
+before_script:
+  - npm prune
+  - npm install -g cypress-cli
+script:
+  - npm start &
+  - cypress ci
+branches:
+  except:
+    - "/^v\\d+\\.\\d+\\.\\d+$/"

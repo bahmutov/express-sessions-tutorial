@@ -2,6 +2,8 @@
 
 > Debugging ExpressJS sessions tutorial
 
+[![Build status][ci-image]][ci-url]
+
 You can run the code at different step, here are the tags
 
 * `step-0` - the initial code without sessions.
@@ -54,3 +56,6 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
+
+[ci-image]: https://travis-ci.org/bahmutov/express-sessions-tutorial.svg?branch=master
+[ci-url]: https://travis-ci.org/bahmutov/express-sessions-tutorial
