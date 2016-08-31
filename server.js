@@ -33,7 +33,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.get('/', function initViewsCount(req, res, next) {
   if (typeof req.session.views === 'undefined') {
     req.session.views = 0;
-    return res.end('Welcome to the file session demo. Refresh page!');
+    return res.render('index', {
+      pageTitle: 'First visit',
+      views: req.session.views
+    });
   }
   return next();
 });
