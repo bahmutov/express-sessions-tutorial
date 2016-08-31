@@ -6,4 +6,13 @@ html(lang="en")
     h1 A form
     #container.col
       p.
-        The form
+        This form will insert CSRF token. Note that
+        it is a different token every time you reload the page
+      pre #{csrfToken}
+
+      form(action="/process", method="POST")
+        input(type="hidden", name="_csrf", value=`${csrfToken}`)
+
+        p You name:
+          input(type="text", name="name")
+        button(type="submit") Submit

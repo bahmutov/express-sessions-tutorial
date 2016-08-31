@@ -11,6 +11,8 @@ app.set('view engine', 'pug')
 
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
+var bodyParser = require('body-parser');
+var csrf = require('csurf');
 
 app.use(session({
   name: 'server-session-cookie-id',
@@ -19,6 +21,14 @@ app.use(session({
   resave: true,
   store: new FileStore()
 }));
+
+var csrfProtection = csrf({
+  cookie: false,
+  sessionKey: 'session' // probably the default, req.session
+})
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', function initViewsCount(req, res, next) {
   if (typeof req.session.views === 'undefined') {
@@ -49,9 +59,20 @@ app.get('/', function sendPageWithCounter(req, res) {
   res.end();
 });
 
-app.get('/form', function (req, res) {
-  res.render('form', {pageTitle: 'Form'})
+// protect form with CSRF
+app.get('/form', csrfProtection, function (req, res) {
+  // csrfProtection can create a new token for us to insert
+  // into the FROM as a hidden input field
+  res.render('form', {
+    pageTitle: 'Form',
+    csrfToken: req.csrfToken()
+  })
 });
+// receive form submission
+app.post('/process', csrfProtection, function (req, res) {
+  console.log('form submission', req.body)
+  res.redirect('/')
+})
 
 var port = process.env.PORT || 3000
 var server = http.createServer(app).listen(port, function () {
