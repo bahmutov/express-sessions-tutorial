@@ -12,6 +12,7 @@ You can run the code at different step, here are the tags
 * `step-5` - Express server running on HTTPS locally.
 * `step-6` - updated code for connecting to self-signed HTTPS servers.
 * `step-7` - passing Referer header from server's response to the next request
+* `step-8` - protecting a form using CSRF attached to the session object
 
 The tutorial itself is at [glebbahmutov.com/blog/express-sessions/](http://glebbahmutov.com/blog/express-sessions/).
 
