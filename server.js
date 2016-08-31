@@ -53,10 +53,10 @@ app.use(function printSession(req, res, next) {
 });
 
 app.get('/', function sendPageWithCounter(req, res) {
-  res.setHeader('Content-Type', 'text/html');
-  res.setHeader('Referer', 'server referer');
-  res.write('<p>views: ' + req.session.views + '</p>\n');
-  res.end();
+  res.render('index', {
+    pageTitle: 'Index page',
+    views: req.session.views
+  });
 });
 
 // protect form with CSRF
@@ -78,5 +78,5 @@ var port = process.env.PORT || 3000
 var server = http.createServer(app).listen(port, function () {
   var host = server.address().address;
   var port = server.address().port;
-  console.log('Example app listening at https://%s:%s', host, port);
+  console.log('Example app listening at http://%s:%s', host, port);
 });
