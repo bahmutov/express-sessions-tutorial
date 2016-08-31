@@ -29,6 +29,8 @@ var csrfProtection = csrf({
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
+// parse JSON bodies
+app.use(bodyParser.json())
 
 app.get('/', function initViewsCount(req, res, next) {
   if (typeof req.session.views === 'undefined') {
@@ -75,6 +77,12 @@ app.get('/form', csrfProtection, function (req, res) {
 app.post('/process', csrfProtection, function (req, res) {
   console.log('form submission', req.body)
   res.redirect('/')
+})
+
+// receive JSON post
+app.post('/fetch', csrfProtection, function (req, res) {
+  console.log('fetch POST', req.body)
+  res.send({status: 'ok'})
 })
 
 var port = process.env.PORT || 3000

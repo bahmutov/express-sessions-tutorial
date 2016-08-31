@@ -22,12 +22,20 @@ describe('Express Session', function(){
     cy.url().should('contain', '/form')
     cy.get('input[name="name"]')
       .type('foo')
-    cy.get('button')
+    cy.get('button[type="submit"]')
       .click()
 
     cy.url().should('equal', 'http://localhost:3000/')
     cy.title().should('include', 'Index page')
     cy.contains('.views', '1')
+  })
+
+  it('can execute POST fetch', () => {
+    cy.contains('a', 'Visit')
+      .click()
+    cy.get('button#fetch')
+      .click()
+    cy.contains('#status', 'ok')
   })
 
 })

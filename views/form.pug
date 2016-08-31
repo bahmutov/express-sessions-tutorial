@@ -16,3 +16,37 @@ html(lang="en")
         p You name:
           input(type="text", name="name")
         button(type="submit") Submit
+
+      h2 JSON fetch request with CSRF
+      button#fetch Fetch
+      div#status Status will be here
+
+    script.
+      function setStatus(s) {
+        document.getElementById('status').innerText = s
+      }
+
+      document.getElementById('fetch').addEventListener('click', () => {
+        console.log('clicked!');
+        fetch('/fetch', {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-type': 'application/json',
+            'x-xsrf-token': '#{csrfToken}'
+          },
+          body: JSON.stringify({
+            foo: 42
+          })
+        })
+        .then(r => r.json())
+        .then(r => r.status)
+        .then(setStatus)
+        .then(() => {
+          console.log('all good')
+        }, (err) => {
+          console.error(err)
+          setStatus('error! ' + err.message)
+        })
+      });
+
