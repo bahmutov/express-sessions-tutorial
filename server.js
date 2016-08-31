@@ -1,8 +1,13 @@
-var https = require('https');
+'use strict';
+
+var http = require('http');
 var fs = require('fs');
 var app = require('express')();
 
 app.use(require('morgan')('dev'));
+
+app.set('views', './views')
+app.set('view engine', 'pug')
 
 var session = require('express-session');
 var FileStore = require('session-file-store')(session);
@@ -44,10 +49,12 @@ app.get('/', function sendPageWithCounter(req, res) {
   res.end();
 });
 
-var server = https.createServer({
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-}, app).listen(3000, function () {
+app.get('/form', function (req, res) {
+  res.render('form', {pageTitle: 'Form'})
+});
+
+var port = process.env.PORT || 3000
+var server = http.createServer(app).listen(port, function () {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Example app listening at https://%s:%s', host, port);
