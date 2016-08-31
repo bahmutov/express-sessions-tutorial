@@ -15,6 +15,7 @@ You can run the code at different step, here are the tags
 * `step-6` - updated code for connecting to self-signed HTTPS servers.
 * `step-7` - passing Referer header from server's response to the next request
 * `step-8` - protecting a form using CSRF attached to the session object
+* `step-9` - protecting JSON POST request with CSRF header
 
 The tutorial itself is at [glebbahmutov.com/blog/express-sessions/](http://glebbahmutov.com/blog/express-sessions/).
 
