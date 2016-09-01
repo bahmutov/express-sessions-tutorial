@@ -13,6 +13,7 @@ var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var bodyParser = require('body-parser');
 var csrf = require('csurf');
+var cookieParser = require('cookie-parser');
 
 app.use(session({
   name: 'server-session-cookie-id',
@@ -23,9 +24,11 @@ app.use(session({
 }));
 
 var csrfProtection = csrf({
-  cookie: false,
-  sessionKey: 'session' // probably the default, req.session
+  cookie: true
 })
+
+// we need this because "cookie" is true in csrfProtection
+app.use(cookieParser())
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
