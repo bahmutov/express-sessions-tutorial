@@ -1,8 +1,11 @@
 'use strict';
 
+var host = process.env.HOST || 'localhost'
+var port = process.env.PORT || 3000
+
 var http = require('http');
-var fs = require('fs');
-var app = require('express')();
+var express = require('express');
+var app = express();
 
 app.use(require('morgan')('dev'));
 
@@ -14,6 +17,9 @@ var FileStore = require('session-file-store')(session);
 var bodyParser = require('body-parser');
 var csrf = require('csurf');
 var cookieParser = require('cookie-parser');
+
+var subdomain = require('express-subdomain');
+var router = express.Router();
 
 app.use(session({
   name: 'server-session-cookie-id',
@@ -43,6 +49,8 @@ app.get('/', function initViewsCount(req, res, next) {
     req.session.views = 0;
     return res.render('index', {
       pageTitle: 'First visit',
+      host: host,
+      port: port,
       views: req.session.views
     });
   }
@@ -66,12 +74,18 @@ app.use(function printSession(req, res, next) {
 app.get('/', function sendPageWithCounter(req, res) {
   res.render('index', {
     pageTitle: 'Index page',
+    host: host,
+    port: port,
     views: req.session.views
   });
 });
 
+//
+// form will be in the sub domain
+//
+
 // protect form with CSRF
-app.get('/form', csrfProtection, function (req, res) {
+router.get('/form', csrfProtection, function (req, res) {
   // csrfProtection can create a new token for us to insert
   // into the FROM as a hidden input field
   res.render('form', {
@@ -80,20 +94,19 @@ app.get('/form', csrfProtection, function (req, res) {
   })
 });
 // receive form submission
-app.post('/process', csrfProtection, function (req, res) {
+router.post('/process', csrfProtection, function (req, res) {
   console.log('form submission', req.body)
   res.redirect('/')
 })
 
 // receive JSON post
-app.post('/fetch', csrfProtection, function (req, res) {
+router.post('/fetch', csrfProtection, function (req, res) {
   console.log('fetch POST', req.body)
   res.send({status: 'ok'})
 })
 
-var port = process.env.PORT || 3000
+app.use(subdomain('forms', router))
+
 var server = http.createServer(app).listen(port, function () {
-  var host = server.address().address;
-  var port = server.address().port;
   console.log('Example app listening at http://%s:%s', host, port);
 });

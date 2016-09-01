@@ -20,6 +20,21 @@ You can run the code at different step, here are the tags
 
 The tutorial itself is at [glebbahmutov.com/blog/express-sessions/](http://glebbahmutov.com/blog/express-sessions/).
 
+## Running with subdomains
+
+In order to test with more than just `localhost:3000` domain, you could
+setup subdomains using [express-subdomain](https://www.npmjs.com/package/express-subdomain).
+
+In order to use the subdomain we need to map domain names to local HTTP
+address. For example using `/etc/hosts`
+
+```
+127.0.0.1   gleb.dev
+127.0.0.1   forms.gleb.dev
+```
+
+
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2015
