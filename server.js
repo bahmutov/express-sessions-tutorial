@@ -24,7 +24,10 @@ app.use(session({
 }));
 
 var csrfProtection = csrf({
-  cookie: true
+  cookie: {
+    key: '_csrf',
+    domain: 'localhost'
+  }
 })
 
 // we need this because "cookie" is true in csrfProtection
