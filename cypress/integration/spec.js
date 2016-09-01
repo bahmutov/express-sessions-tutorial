@@ -1,7 +1,9 @@
 describe('Express Session', function(){
 
+  const baseUrl = 'http://localhost:3000'
+
   beforeEach(function () {
-    cy.visit('http://localhost:3000')
+    cy.visit(baseUrl)
   })
 
   it('starts without sessions', function(){
@@ -9,10 +11,10 @@ describe('Express Session', function(){
   })
 
   it('increments the session counter on each visit', function(){
-    cy.visit('http://localhost:3000')
+    cy.visit(baseUrl)
     cy.title().should('include', 'Index page')
     cy.contains('.views', '1')
-    cy.visit('http://localhost:3000')
+    cy.visit(baseUrl)
     cy.contains('.views', '2')
   })
 
@@ -25,7 +27,7 @@ describe('Express Session', function(){
     cy.get('button[type="submit"]')
       .click()
 
-    cy.url().should('equal', 'http://localhost:3000/')
+    cy.url().should('equal', baseUrl + '/')
     cy.title().should('include', 'Index page')
     cy.contains('.views', '1')
   })
