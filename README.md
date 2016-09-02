@@ -21,6 +21,28 @@ You can run the code at different step, here are the tags
 
 The tutorial itself is at [glebbahmutov.com/blog/express-sessions/](http://glebbahmutov.com/blog/express-sessions/).
 
+## To use
+
+```sh
+git clone git@github.com:bahmutov/express-sessions-tutorial.git
+cd express-sessions-tutorial
+git checkout step-0
+npm install
+npm start
+```
+
+The open the displayed url, usually `localhost:3000` in the browser or make
+requests using `curl` or `http` following the blog post.
+
+You can switch to another step, but probably need to run `npm install`
+command.
+
+```sh
+git checkout step-10
+npm install
+npm start
+```
+
 ## Running with subdomains
 
 In order to test with more than just `localhost:3000` domain, you could
