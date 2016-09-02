@@ -1,6 +1,6 @@
 describe('Express Session', function(){
 
-  const baseUrl = 'http://localhost:3000'
+  const baseUrl = Cypress.env('HOST') || 'http://localhost:3000'
 
   beforeEach(function () {
     cy.visit(baseUrl)

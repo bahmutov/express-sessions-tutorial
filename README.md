@@ -17,6 +17,7 @@ You can run the code at different step, here are the tags
 * `step-8` - protecting a form using CSRF attached to the session object
 * `step-9` - protecting JSON POST request with CSRF header
 * `step-10` - CSRF using cookie, not session
+* `step-11` - pass HOST and cookie options to set explicit domain
 
 The tutorial itself is at [glebbahmutov.com/blog/express-sessions/](http://glebbahmutov.com/blog/express-sessions/).
 
@@ -33,7 +34,8 @@ address. For example using `/etc/hosts`
 127.0.0.1   forms.gleb.dev
 ```
 
-
+There is a weird issue testing this project using Cypress against domains,
+see [issues/4](https://github.com/bahmutov/express-sessions-tutorial/issues/4).
 
 ### Small print
 

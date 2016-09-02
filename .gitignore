@@ -2,3 +2,4 @@ node_modules/
 sessions/
 cookies
 npm-debug.log
+cypress/screenshots/

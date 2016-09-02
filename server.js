@@ -2,6 +2,7 @@
 
 var host = process.env.HOST || 'localhost'
 var port = process.env.PORT || 3000
+var useDomainForCookies = process.env.DOMAIN || false
 
 var http = require('http');
 var express = require('express');
@@ -26,13 +27,16 @@ app.use(session({
   secret: 'my express secret',
   saveUninitialized: true,
   resave: true,
-  store: new FileStore()
+  store: new FileStore(),
+  cookie: {
+    domain: useDomainForCookies ? host : undefined
+  }
 }));
 
 var csrfProtection = csrf({
   cookie: {
     key: '_csrf',
-    domain: 'localhost'
+    domain: useDomainForCookies ? host : undefined
   }
 })
 
@@ -104,8 +108,8 @@ router.post('/fetch', csrfProtection, function (req, res) {
   console.log('fetch POST', req.body)
   res.send({status: 'ok'})
 })
-
-app.use(subdomain('forms', router))
+// app.use(subdomain('forms', router))
+app.use(router);
 
 var server = http.createServer(app).listen(port, function () {
   console.log('Example app listening at http://%s:%s', host, port);
