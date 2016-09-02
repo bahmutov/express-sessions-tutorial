@@ -29,6 +29,7 @@ app.use(session({
   resave: true,
   store: new FileStore(),
   cookie: {
+    sameSite: true,
     domain: useDomainForCookies ? host : undefined
   }
 }));
@@ -36,6 +37,7 @@ app.use(session({
 var csrfProtection = csrf({
   cookie: {
     key: '_csrf',
+    sameSite: true,
     domain: useDomainForCookies ? host : undefined
   }
 })
