@@ -38,6 +38,7 @@ var csrfProtection = csrf({
   cookie: {
     key: '_csrf',
     sameSite: true,
+    httpOnly: true,
     domain: useDomainForCookies ? host : undefined
   }
 })

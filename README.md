@@ -18,6 +18,8 @@ You can run the code at different step, here are the tags
 * `step-9` - protecting JSON POST request with CSRF header
 * `step-10` - CSRF using cookie, not session
 * `step-11` - pass HOST and cookie options to set explicit domain
+* `step-12` - session and CSRF cookies are set with flags
+  [HttpOnly and SameSite](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies).
 
 The tutorial itself is at [glebbahmutov.com/blog/express-sessions/](http://glebbahmutov.com/blog/express-sessions/).
 
