@@ -11,8 +11,14 @@ before_script:
   - npm prune
   - npm install -g cypress-cli
 script:
+  # tests server running locally
   - npm start &
   - cypress ci
+  # deploy and test "production" server
+  - npm install -g now-pipeline
+  - pipeline-list
+  # - list
+  # - prune
 branches:
   except:
     - "/^v\\d+\\.\\d+\\.\\d+$/"
