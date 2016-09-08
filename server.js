@@ -27,7 +27,9 @@ app.use(session({
   secret: 'my express secret',
   saveUninitialized: true,
   resave: true,
-  store: new FileStore(),
+  store: new FileStore({
+    path: '/tmp'
+  }),
   cookie: {
     sameSite: true,
     domain: useDomainForCookies ? host : undefined
