@@ -15,10 +15,10 @@ script:
   - npm start &
   - cypress ci
   # deploy and test "production" server
-  - npm install -g now-pipeline@1.2.0
+  - npm install -g now-pipeline@1.3.0
   - now-pipeline-list
   - echo Trying to deploy new stuff
-  - now-pipeline package.json server.js views/*
+  - now-pipeline --test "npm run prod-test" package.json server.js views/*
   # - list
   # - prune
 branches:
