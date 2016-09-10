@@ -18,7 +18,7 @@ script:
   - npm install -g now-pipeline@1.7.0
   - now-pipeline-list
   - echo Trying to deploy new stuff
-  - now-pipeline --test "npm run prod-test" package.json server.js views/*
+  - now-pipeline --test "npm run prod-test"
   # - list
   # - prune
 branches:
