@@ -1,6 +1,6 @@
 {
   "name": "express-sessions-tutorial",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "ExpressJS session tutorial",
   "main": "index.js",
   "files": [
@@ -15,7 +15,8 @@
     "make-certificate": "openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365",
     "remove-passphrase": "openssl rsa -in key.pem -out newkey.pem && mv newkey.pem key.pem",
     "prod-test": "CYPRESS_HOST=$NOW_URL cypress ci",
-    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";"
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
     "express",
@@ -37,7 +38,13 @@
     "tough-cookie-filestore": "0.0.1"
   },
   "devDependencies": {
+    "next-update-travis": "^1.7.0",
     "nodemon": "1.11.0",
-    "npm-run-all": "4.0.2"
+    "npm-run-all": "4.0.2",
+    "semantic-release": "^6.3.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bahmutov/express-sessions-tutorial.git"
   }
 }

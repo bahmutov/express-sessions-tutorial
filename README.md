@@ -3,6 +3,7 @@
 > Debugging ExpressJS sessions tutorial
 
 [![Build status][ci-image]][ci-url]
+[![next-update-travis badge][nut-badge]][nut-readme]
 
 You can run the code at different step, here are the tags
 
@@ -102,3 +103,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 [ci-image]: https://travis-ci.org/bahmutov/express-sessions-tutorial.svg?branch=master
 [ci-url]: https://travis-ci.org/bahmutov/express-sessions-tutorial
+[nut-badge]: https://img.shields.io/badge/next--update--travis-ok-green.svg
+[nut-readme]: https://github.com/bahmutov/next-update-travis#readme

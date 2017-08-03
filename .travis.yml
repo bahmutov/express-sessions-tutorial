@@ -11,6 +11,8 @@ before_script:
   - npm prune
   - npm install -g cypress-cli
 script:
+  # upgrade dependencies if a CRON job
+  - ./next-update-travis.sh
   # tests server running locally
   - npm start &
   - cypress ci
