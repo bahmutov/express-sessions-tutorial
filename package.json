@@ -28,19 +28,19 @@
     "body-parser": "1.17.2",
     "cookie-parser": "1.4.3",
     "csurf": "1.9.0",
-    "express": "4.15.3",
+    "express": "4.15.4",
     "express-session": "1.15.5",
     "express-subdomain": "1.0.5",
     "morgan": "1.8.2",
     "pug": "2.0.0-beta6",
     "request-promise": "4.2.1",
-    "session-file-store": "1.1.1",
+    "session-file-store": "1.1.2",
     "tough-cookie-filestore": "0.0.1"
   },
   "devDependencies": {
-    "next-update-travis": "^1.7.0",
+    "next-update-travis": "1.7.1",
     "nodemon": "1.11.0",
-    "npm-run-all": "4.0.2",
+    "npm-run-all": "4.1.1",
     "semantic-release": "^6.3.6"
   },
   "repository": {
